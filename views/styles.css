@@ -5,6 +5,7 @@
     --text-secondary: #ececec;
     --bg-primary: #23232e;
     --bg-secondary: #141418;
+    --transition-speed:300ms;
     
   }
 body{
@@ -35,7 +36,8 @@ main {
     width:5rem;
     height: 100vh;
     position: fixed;
-    background: var(--bg-primary);
+    background-color: var(--bg-primary);
+    transition: width 200ms ease;
 }
 
 .navbar-nav {
@@ -44,14 +46,69 @@ main {
     margin: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
+
+
 
 .nav-item{
     width: 100%;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+.link-text{
+    display:none;
+    margin-left: 1rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    filter: grayscale(100%) opacity(0.7);
+    transition: var(--transition-speed);
+}
+
+.nav-link:hover{
+    filter: grayscale(0) opacity(1);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.nav-link svg {
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+    margin-top: 1rem;
+}
+
+.navbar:hover{
+    width:16rem;
+}
+
+.navbar:hover .link-text{
+    display: block;
+
 }
 
 .nav-item:last-child{
     margin-top: auto;
 }
 
+.fa-primary{
+    color: #ff7eee;
+}
+
+.fa-secondary{
+    color: #df49a6;
+}
+
+.fa-primary, .fa-secondary{
+    transition: var(--transition-speed);
+}
 
