@@ -8,14 +8,14 @@
 
     <div class="blog content">
         <h2 class="text-2xl font-bold">All Blogs</h2>
-
+        <div class="mt-8 grid bg-gray-100 sm:grid-cols-3 gap-10">
         <% if(blogs.length > 0) { %>
             <% i=0; %>
             <% blogs.forEach(blog => { %>
                 <% i=i+1; %>
                 <% if(i>3) { i= 1 } %>
                 
-                    <div class="card hover:shadow-lg hover:scale-110">
+                    <div class="card hover:shadow-lg hover:scale-110 gap-10">
                     
                     <a class="grid grid-rows-3 gap-10 overflow-hidden" href="/blogs/<%= blog._id %>">
                         <img class="" src="/img/img<%= i %>.jpg">
@@ -24,12 +24,15 @@
                         </h3>     
                         <p class="m-4 text-xl block text-gray-500 text-sm"><%= blog.snippet %></p>                
                     </a>
-                </div>           
+                </div> 
+              
             <% }) %>
         <% } else { %>
             <p>There are No Blogs to Display....</p>
         <% } %>
     </div>
+    </div>
+
 
 
 <%- include('../partials/footer.ejs') %>
