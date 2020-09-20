@@ -1,0 +1,38 @@
+<html lang="en">
+<!-- this is a partial -->
+<%- include('../partials/head.ejs') %>
+
+<body>
+
+    <%- include('../partials/nav.ejs') %>
+
+    <div class="blog content">
+        <h2 class="text-2xl font-bold">All Blogs</h2>
+
+        <% if(blogs.length > 0) { %>
+            <% i=0; %>
+            <% blogs.forEach(blog => { %>
+                <% i=i+1; %>
+                <% if(i>3) { i= 1 } %>
+                
+                    <div class="card hover:shadow-lg hover:scale-110">
+                    
+                    <a class="grid grid-rows-3 gap-10 overflow-hidden" href="/blogs/<%= blog._id %>">
+                        <img class="" src="/img/img<%= i %>.jpg">
+                        <h3 class="title text-2xl font-semibold hover:text-crimson">
+                        <%= blog.title%>
+                        </h3>     
+                        <p class="m-4 text-xl block text-gray-500 text-sm"><%= blog.snippet %></p>                
+                    </a>
+                </div>           
+            <% }) %>
+        <% } else { %>
+            <p>There are No Blogs to Display....</p>
+        <% } %>
+    </div>
+
+
+<%- include('../partials/footer.ejs') %>
+    
+</body>
+</html>
