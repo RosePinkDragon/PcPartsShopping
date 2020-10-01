@@ -21389,6 +21389,13 @@ video {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
+.form-border{
+  border-width: 1px;
+  --border-opacity: 1;
+  border-color: #4a5568;
+  border-color: rgba(74, 85, 104, var(--border-opacity));
+}
+
 body{
   max-width: 1200px;
   margin: 20px auto;
@@ -21456,13 +21463,8 @@ h3{
 
 .blog a{
   display: block;
-  margin: 40px 0;
-  padding-left: 30px;
-  border-left: 6px solid crimson;
-}
-
-.blog a:hover {
-  border-left:0px;
+  margin: 40px;
+  /* padding-left: 30px; */
 }
 
 .blog a:hover h3{

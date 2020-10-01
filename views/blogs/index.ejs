@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <!-- this is a partial -->
 <%- include('../partials/head.ejs') %>
@@ -8,29 +9,27 @@
 
     <div class="blog content">
         <h2 class="text-2xl font-bold">All Blogs</h2>
-        <div class="mt-8 grid bg-gray-100 sm:grid-cols-3 gap-10">
-        <% if(blogs.length > 0) { %>
-            <% i=0; %>
-            <% blogs.forEach(blog => { %>
-                <% i=i+1; %>
-                <% if(i>3) { i= 1 } %>
-                
-                    <div class="card hover:shadow-lg hover:scale-110 gap-10">
+        <div class="m-8 grid sm:grid-cols-3">
+            <% if(blogs.length > 0) { %>
+                    <% blogs.forEach(blog => { %>
+                    <% i=Math.floor(Math.random()*(10 - 1 +1)+1); %>
                     
-                    <a class="grid grid-rows-3 gap-10 overflow-hidden" href="/blogs/<%= blog._id %>">
-                        <img class="" src="/img/img<%= i %>.jpg">
-                        <h3 class="title text-2xl font-semibold hover:text-crimson">
-                        <%= blog.title%>
-                        </h3>     
-                        <p class="m-4 text-xl block text-gray-500 text-sm"><%= blog.snippet %></p>                
-                    </a>
-                </div> 
-              
-            <% }) %>
-        <% } else { %>
-            <p>There are No Blogs to Display....</p>
-        <% } %>
-    </div>
+                        <div class="card hover:shadow-lg hover:bg-gray-200 hover:scale-110">
+                        
+                        <a class="" href="/blogs/<%= blog._id %>">
+                            <img class="" src="/img/img<%= i %>.jpg">
+                            <h3 class="title text-2xl font-semibold hover:text-crimson">
+                            <%= blog.title%>
+                            </h3>     
+                            <p class="text-xl block text-gray-500"><%= blog.snippet %></p>                
+                        </a>
+                    </div> 
+                
+                <% }) %>
+            <% } else { %>
+                <p>There are No Blogs to Display....</p>
+            <% } %>
+        </div>
     </div>
 
 
