@@ -8,22 +8,22 @@ const morgan = require('morgan');
 // we remove blog from here cause we import it from blogRoute
 
 //importing routes
-const blogRoutes= require('./routes/blogRoutes')
+const blogRoutes = require('./routes/blogRoutes')
 
 
 //databse
-const  mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const { render } = require('ejs');
-const dbURI = 'mongodb+srv://netninja:Asdf1123@nodeninja.afwxy.mongodb.net/node-tuts?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://netninja:Asdf1123@nodeninja.afwxy.mongodb.net/dbname?retryWrites=true&w=majority';
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-//no semicolon here
-.then((result) => {
-    console.log('connection successful')   
-    app.listen(3000);
-})
-//no semicolon yet in the above line
-.catch((err) => console.log(err));
+    //no semicolon here
+    .then((result) => {
+        console.log('connection successful')
+        app.listen(3000);
+    })
+    //no semicolon yet in the above line
+    .catch((err) => console.log(err));
 //finally a semicolon, the function wont work w/o a semicolon
 //this function requires semicolon at end not in between the lines
 
@@ -49,11 +49,11 @@ app.get('/add-blog', (req, res) => {
     });
 
     blog.save()
-        .then((result) =>{
+        .then((result) => {
             res.send(result)
         })
         .catch((err) => {
-             console.log(err);
+            console.log(err);
         });
 })
 
@@ -72,7 +72,7 @@ app.get('/single-blog', (req, res) => {
         .then((result) => {
             res.send(result)
         })
-        .catch((err) =>{
+        .catch((err) => {
             console.log(err);
         });
 })
@@ -84,7 +84,7 @@ app.get('/', (req, res) => {
     //     {title: 'Mario finds stars', snippet: 'lorem ipdum dit amet consectetur'},
     //     {title: 'Mario Found Princess', snippet: 'lorem ipdum dit amet consectetur'}
     // ];
-    
+
     // res.send('<p>Home Page</p>');
     //res.sendFile('./views/index.html', {root: __dirname});
     //used to send ejs files
@@ -100,12 +100,12 @@ app.get('/about', (req, res) => {
     // //res.send('<p>About Page</p>');
     // res.sendFile('./views/about.html', {root: __dirname});
     //ejs files
-    res.render('about', {title: 'About'})
+    res.render('about', { title: 'About' })
 });
 
 //redirect
-app.get('/about-us', (req,res) => {
-    res.redirect('/about', {title: 'About'});
+app.get('/about-us', (req, res) => {
+    res.redirect('/about', { title: 'About' });
 });
 
 
@@ -116,5 +116,5 @@ app.use('/', blogRoutes)
 //404 page i.e error page
 //putting this line above will stop the code right there and not proceed
 app.use((req, res) => {
-    res.status(404).render('404', {title: 'Error'});
+    res.status(404).render('404', { title: 'Error' });
 });
